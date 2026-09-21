@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ders Programı">
+<meta name="theme-color" content="#0b1b3a">
+<meta name="description" content="Esenyurt Üniversitesi MYO 2026-2027 Güz dönemi ders programı - haftalık görünüm, derslik ve öğretim görevlisi bilgileri.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232f6bff'/%3E%3Ctext x='50' y='69' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EE%26%23252%3B%3C/text%3E%3C/svg%3E">
+<title>Aşçılık Ders Programı · Esenyurt Üniversitesi MYO</title>
+<style>
+  :root{
+    --bg:#eef1f6; --bg2:#e3e8f1; --card:#ffffff; --text:#101828; --muted:#667085;
+    --line:rgba(16,24,40,.10); --accent:#2f6bff; --accent-ink:#ffffff; --accent-soft:rgba(47,107,255,.10);
+    --ok:#12b76a; --ok-soft:rgba(18,183,106,.12); --warn:#f79009; --warn-soft:rgba(247,144,9,.14);
+    --radius:20px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px -12px rgba(16,24,40,.18);
+    --glass:rgba(255,255,255,.72); --chipbg:rgba(120,120,128,.16); --warnline:rgba(247,144,9,.35);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0b0f17; --bg2:#111827; --card:#161c27; --text:#eef2f8; --muted:#98a2b3;
+      --line:rgba(255,255,255,.09); --accent:#5b8dff; --accent-ink:#0b0f17; --accent-soft:rgba(91,141,255,.16);
+      --ok:#32d583; --ok-soft:rgba(50,213,131,.14); --warn:#fdb022; --warn-soft:rgba(253,176,34,.16);
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 30px -16px rgba(0,0,0,.7);
+      --glass:rgba(17,24,39,.72); --chipbg:rgba(152,162,179,.18); --warnline:rgba(253,176,34,.35);
+    }
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+    background-attachment:fixed;
+    color:var(--text);
+    font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    min-height:100vh; overscroll-behavior-y:none;
+  }
+  button{font:inherit;color:inherit;cursor:pointer}
+  input{font:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px}
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding-top:env(safe-area-inset-top);
+    background:var(--glass);
+    -webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);
+    border-bottom:1px solid var(--line);
+  }
+  .toprow{display:flex;align-items:center;gap:12px;padding:10px 16px;max-width:720px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+  .logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#2f6bff,#7c3aed);display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;letter-spacing:.3px;flex:none;box-shadow:0 4px 12px -4px rgba(47,107,255,.7)}
+  .brandtxt{min-width:0}
+  .brandtxt b{display:block;font-size:15px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brandtxt span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ghost{
+    border:1px solid var(--line);background:var(--card);border-radius:12px;
+    padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;flex:none;
+  }
+  .ghost:active{transform:scale(.96)}
+
+  main{padding:16px 0 calc(40px + env(safe-area-inset-bottom))}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;border-radius:24px;padding:18px 18px 16px;
+    background:linear-gradient(135deg,#1b3a8f 0%,#2f6bff 55%,#7c3aed 120%);
+    box-shadow:0 18px 40px -22px rgba(27,58,143,.9);
+  }
+  .hero:after{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .hero .dt{position:relative;font-size:13px;font-weight:600;opacity:.9;letter-spacing:.2px}
+  .hero .big{position:relative;font-size:22px;font-weight:750;letter-spacing:-.4px;margin-top:8px;line-height:1.25}
+  .hero .sub{position:relative;font-size:14px;opacity:.95;margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .hero .badge{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;letter-spacing:.3px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:#7CFFB2;box-shadow:0 0 0 0 rgba(124,255,178,.8);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,255,178,.7)}70%{box-shadow:0 0 0 9px rgba(124,255,178,0)}100%{box-shadow:0 0 0 0 rgba(124,255,178,0)}}
+
+  /* ---------- segmented ---------- */
+  .seg{display:flex;gap:3px;background:var(--chipbg);border-radius:14px;padding:3px;margin:16px 0}
+  .seg button{flex:1;border:0;background:transparent;padding:9px 6px;border-radius:11px;font-size:14px;font-weight:650;color:var(--muted);transition:.15s}
+  .seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(16,24,40,.16)}
+
+  .sechead{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:20px 4px 10px}
+
+  /* ---------- day chips ---------- */
+  .days{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+  .days::-webkit-scrollbar{display:none}
+  .chip{
+    flex:none;min-width:52px;border:1px solid var(--line);background:var(--card);border-radius:14px;
+    padding:8px 6px 7px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;
+  }
+  .chip b{font-size:13px;font-weight:700}
+  .chip small{font-size:11px;color:var(--muted);font-weight:600}
+  .chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .chip.on small,.chip.on .dot{color:var(--accent-ink)}
+  .chip.on .dot{background:var(--accent-ink)}
+  .chip.today:not(.on){border-color:var(--accent)}
+
+  /* ---------- class card ---------- */
+  .cls{
+    display:flex;gap:13px;align-items:stretch;background:var(--card);border-radius:18px;
+    padding:14px;margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--line);width:100%;text-align:left;
+  }
+  .cls .tm{flex:none;width:62px;display:flex;flex-direction:column;gap:2px;padding-top:1px}
+  .cls .tm b{font-size:15px;font-weight:750;letter-spacing:-.2px}
+  .cls .tm span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .cls .bar{width:4px;border-radius:4px;background:var(--accent-soft);flex:none}
+  .cls .bd{flex:1;min-width:0}
+  .cls .ttl{font-size:15.5px;font-weight:680;letter-spacing:-.25px;line-height:1.3}
+  .cls .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .pill{display:inline-flex;align-items:center;gap:5px;border-radius:9px;padding:4px 8px;font-size:12.5px;font-weight:650;background:var(--accent-soft);color:var(--accent)}
+  .pill.plain{background:var(--chipbg);color:var(--muted)}
+  .pill svg{width:12px;height:12px}
+  .cls .inst{font-size:12.5px;color:var(--muted);margin-top:8px;display:flex;align-items:center;gap:6px}
+  .cls .inst svg{width:13px;height:13px;flex:none;opacity:.8}
+  .cls.now{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok-soft),var(--shadow)}
+  .cls.now .bar{background:var(--ok)}
+  .cls.choose{border-style:dashed;color:var(--muted);align-items:center}
+  .cls.choose .ttl{color:var(--text)}
+  .cls .chg{align-self:flex-start;border:0;background:transparent;color:var(--accent);font-size:12.5px;font-weight:700;padding:2px}
+
+  .empty{background:var(--card);border:1px dashed var(--line);border-radius:18px;padding:26px 18px;text-align:center;color:var(--muted);box-shadow:var(--shadow)}
+  .empty b{display:block;color:var(--text);font-size:16px;margin-bottom:4px}
+
+  /* ---------- course list ---------- */
+  .search{position:relative;margin:4px 0 12px}
+  .search input{
+    width:100%;padding:12px 14px 12px 40px;border-radius:14px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:16px;outline:none;box-shadow:var(--shadow);
+  }
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+  .row{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+  .row .when{flex:none;width:74px}
+  .row .when b{display:block;font-size:13px;font-weight:750}
+  .row .when span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .row .ttl{font-size:14.5px;font-weight:650;letter-spacing:-.2px}
+  .row .sub{font-size:12.5px;color:var(--muted);margin-top:5px;display:flex;flex-wrap:wrap;gap:6px}
+
+  /* ---------- overlays ---------- */
+  .scrim{position:fixed;inset:0;background:rgba(6,10,20,.45);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);z-index:40;opacity:0;pointer-events:none;transition:.2s}
+  .scrim.show{opacity:1;pointer-events:auto}
+  .overlay{
+    position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;
+    transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);visibility:hidden;
+  }
+  .overlay.show{transform:none;visibility:visible}
+  .ovhead{padding-top:calc(env(safe-area-inset-top) + 12px);padding-bottom:10px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .ovhead .in{max-width:720px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px}
+  .ovhead h2{margin:0;font-size:19px;letter-spacing:-.4px;flex:1}
+  .ovbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 0 calc(30px + env(safe-area-inset-bottom))}
+  .ovbody .in{max-width:720px;margin:0 auto;padding:0 16px}
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .intro b{display:block;font-size:16px;letter-spacing:-.3px;margin-bottom:4px}
+  .intro p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+  .prog{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
+  .prog .nm{font-size:15px;font-weight:660;letter-spacing:-.25px}
+  .prog .sems{display:flex;gap:8px;margin-top:10px}
+  .sembtn{flex:1;border:1px solid var(--line);background:transparent;border-radius:11px;padding:9px 8px;font-size:13px;font-weight:650}
+  .sembtn.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .sembtn:active{transform:scale(.98)}
+
+  .sheet{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);
+    border-radius:22px 22px 0 0;max-height:82vh;display:flex;flex-direction:column;
+    transform:translateY(101%);transition:transform .28s cubic-bezier(.32,.72,0,1);visibility:hidden;
+    box-shadow:0 -10px 40px -12px rgba(0,0,0,.35);
+  }
+  .sheet.show{transform:none;visibility:visible}
+  .sheet .grab{width:38px;height:5px;border-radius:3px;background:var(--line);margin:9px auto 2px}
+  .sheet h3{margin:6px 18px 2px;font-size:17px;letter-spacing:-.35px}
+  .sheet .hint{margin:2px 18px 8px;color:var(--muted);font-size:13px}
+  .sheet .list{overflow:auto;-webkit-overflow-scrolling:touch;padding:6px 12px calc(16px + env(safe-area-inset-bottom))}
+  .opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:0;background:transparent;padding:13px 8px;border-radius:12px}
+  .opt+.opt{border-top:1px solid var(--line)}
+  .opt .radio{width:21px;height:21px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center}
+  .opt.sel .radio{border-color:var(--accent)}
+  .opt.sel .radio:after{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .opt .ot{font-size:14.5px;font-weight:640;letter-spacing:-.2px}
+  .opt .os{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+  /* ---------- misc ---------- */
+  .tip{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);border:1px solid var(--warnline);border-radius:16px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.45}
+  .tip b{font-weight:700}
+  .tip button{margin-left:auto;border:0;background:transparent;color:var(--muted);font-weight:700;font-size:16px;line-height:1;padding:2px 4px}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 4px 10px;line-height:1.5}
+  footer a{color:var(--accent);text-decoration:none}
+  .fade{animation:fade .25s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  /* ---------- yarıyıl seçici ---------- */
+  .semsel{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+  .sem{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:11px 13px;text-align:left;box-shadow:var(--shadow);transition:.15s}
+  .sem b{display:block;font-size:14.5px;letter-spacing:-.2px}
+  .sem small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+  .sem.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .sem.on small{color:var(--accent-ink);opacity:.85}
+  .sem.off{border-style:dashed;opacity:.6}
+  .sem.on.off{opacity:1}
+  .sem:active{transform:scale(.98)}
+  @media print{.seg,.days,.tip,header.top,footer,.semsel{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="toprow">
+    <div class="brand">
+      <div class="logo">AŞ</div>
+      <div class="brandtxt">
+        <b id="hTitle">Aşçılık Programı</b>
+        <span id="hSub">Esenyurt Üniversitesi MYO · 2026-2027 Güz</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main><div class="wrap" id="app"></div></main>
+
+<div class="scrim" id="scrim" data-act="closeAll"></div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="grab"></div>
+  <h3 id="sheetTitle">Seçmeli ders</h3>
+  <div class="hint" id="sheetHint"></div>
+  <div class="list" id="sheetList"></div>
+</div>
+
+<script>
+const DATA = 
+[{"s":1,"b":"AŞÇILIK","c":"","n":"Beslenmenin Temel İlkeleri","d":1,"st":"10:00","en":"12:00","r":"AVM 1","cr":"2","i":"Dr. Öğr. Üyesi Tuba ALDEMİR"},{"s":1,"b":"AŞÇILIK","c":"","n":"Yiyecek Hazırlama ve Pişirme Teknikleri","d":2,"st":"09:00","en":"12:00","r":"AVM MUTFAK","cr":"3","i":"Öğr. Gör. Sultan YÜKSEKKAYA AKINCI"},{"s":1,"b":"AŞÇILIK","c":"","n":"İş ve Meslek Etiği","d":2,"st":"14:00","en":"16:00","r":"AVM 1","cr":"2","i":"Öğr. Gör. Sultan YÜKSEKKAYA AKINCI"},{"s":1,"b":"AŞÇILIK","c":"","n":"İngilizce 1","d":2,"st":"16:00","en":"18:00","r":"3D8","cr":"2","i":"Öğr. Gör. Mehmet Kaan SEYRATLI"},{"s":1,"b":"AŞÇILIK","c":"","n":"Gıda Hijyeni ve Mevzuatı","d":3,"st":"10:00","en":"12:00","r":"AVM 1","cr":"2","i":"Dr. Öğr. Üyesi Tuba ALDEMİR"},{"s":1,"b":"AŞÇILIK","c":"","n":"Gastronomi Turizmi ve Sürdürülebilirlik","d":3,"st":"13:00","en":"15:00","r":"AVM 1","cr":"2","i":"Dr. Öğr. Üyesi Tuba ALDEMİR"},{"s":1,"b":"AŞÇILIK","c":"","n":"İNGİLİZCE 1","d":5,"st":"09:00","en":"12:00","r":"4D10","cr":"3","i":"Öğr. Gör. Mehmet Kaan SEYRATLI"},{"s":1,"b":"AŞÇILIK","c":"","n":"Yiyecek ve İçecek Otomasyon Sistemleri","d":5,"st":"14:00","en":"16:00","r":"8D1","cr":"2","i":"Öğr. Gör. Aysu Azra KARAKURT"},{"s":3,"b":"AŞÇILIK","c":"","n":"Ekmek Yapımı","d":1,"st":"10:00","en":"13:00","r":"AVM MUTFAK","cr":"3","i":"Öğr. Gör. Sultan YÜKSEKKAYA AKINCI"},{"s":3,"b":"AŞÇILIK","c":"","n":"Mutfak Akımları","d":1,"st":"14:00","en":"16:00","r":"AVM 1","cr":"2","i":"Dr. Öğr. Üyesi Tuba ALDEMİR"},{"s":3,"b":"AŞÇILIK","c":"","n":"Türk Mutfağı","d":2,"st":"09:00","en":"12:00","r":"AVM MUTFAK","cr":"3","i":"Öğr. Gör. Aysu Azra KARAKURT"},{"s":3,"b":"AŞÇILIK","c":"","n":"Yemek Süsleme Sanatı","d":3,"st":"10:00","en":"13:00","r":"AVM MUTFAK","cr":"3","i":"Öğr. Gör. Aysu Azra KARAKURT"},{"s":3,"b":"AŞÇILIK","c":"","n":"Bilgi ve İletişim Teknolojileri","d":4,"st":"13:00","en":"15:00","r":"3A6","cr":"2","i":"Öğr. Gör. Yusuf KEP"},{"s":3,"b":"AŞÇILIK","c":"","n":"Aile İçi İletişim ve Eğitim","d":4,"st":"13:00","en":"15:00","r":"3A4","cr":"2","i":"Öğr. Gör. Ayşenur UÇAR"},{"s":3,"b":"AŞÇILIK","c":"","n":"Diksiyon","d":4,"st":"13:00","en":"15:00","r":"4D10","cr":"2","i":"Öğr. Gör. Pınar ÖZTARKAN ÖZYURT"},{"s":3,"b":"AŞÇILIK","c":"","n":"İmaj Yönetimi","d":4,"st":"13:00","en":"15:00","r":"3D7","cr":"2","i":"Öğr. Gör. Meral BİRDAL"},{"s":3,"b":"AŞÇILIK","c":"","n":"Dijital İçerik Üretimi","d":4,"st":"13:00","en":"15:00","r":"4A4","cr":"2","i":"Öğr. Gör. Muhammet KARAKUŞ"},{"s":3,"b":"AŞÇILIK","c":"","n":"Senaryo Yazımı","d":4,"st":"13:00","en":"15:00","r":"3A5","cr":"2","i":"Öğr. Gör. Erman ŞAHİNER"},{"s":3,"b":"AŞÇILIK","c":"","n":"Dünya Müzeleri","d":4,"st":"13:00","en":"15:00","r":"4A3","cr":"2","i":"Öğr. Gör. Gizem Evrim BİLGİ"},{"s":3,"b":"AŞÇILIK","c":"","n":"Yapay Zeka Uygulamaları","d":4,"st":"13:00","en":"15:00","r":"8A1","cr":"2","i":"Öğr. Gör. Samet YILDIRIM"},{"s":3,"b":"AŞÇILIK","c":"","n":"Gönüllülük Çalışmaları","d":4,"st":"13:00","en":"15:00","r":"3D6","cr":"2","i":"Öğr. Gör. Merve EMECEN"},{"s":3,"b":"AŞÇILIK","c":"","n":"Zaman Yönetimi ve Planlama","d":4,"st":"13:00","en":"15:00","r":"3D10","cr":"2","i":"Öğr. Gör. Esengünl YANLIŞLAR"},{"s":3,"b":"AŞÇILIK","c":"","n":"İşletmelerde Yönetim ve Organizasyon","d":4,"st":"13:00","en":"15:00","r":"8D1","cr":"2","i":"Öğr. Gör. Bedriye DENİZ"},{"s":3,"b":"AŞÇILIK","c":"","n":"İLERİ İNGİLİZCE","d":4,"st":"16:00","en":"18:00","r":"3D8","cr":"2","i":"Öğr. Gör. Mehmet Kaan SEYRATLI"},{"s":3,"b":"AŞÇILIK","c":"","n":"Yiyecek ve İçecek Otomasyon Sistemleri","d":5,"st":"14:00","en":"16:00","r":"8D1","cr":"2","i":"Öğr. Gör. Aysu Azra KARAKURT"},{"s":3,"b":"AŞÇILIK","c":"","n":"İLERİ İNGİLİZCE","d":5,"st":"16:00","en":"18:00","r":"3D8","cr":"2","i":"Öğr. Gör. Mehmet Kaan SEYRATLI"}];
+"use strict";
+(function(){
+  var DAYS=[["Pazartesi","Pzt"],["Salı","Sal"],["Çarşamba","Çar"],["Perşembe","Per"],["Cuma","Cum"],["Cumartesi","Cmt"],["Pazar","Paz"]];
+  var AYLAR=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+  var SEMS=[1,2,3,4];
+  var LSKEY="ascilik.ders.v1";
+  var SERVIS=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"];
+  var IC={
+    pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.4-3.4 4-5 7-5s5.6 1.6 7 5"/></svg>'
+  };
+  var S={sem:1,tab:"today",day:null,q:""};
+  var picks={};
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  var TRlo={Ç:"ç",Ğ:"ğ",I:"ı",İ:"i",Ö:"ö",Ş:"ş",Ü:"ü",Â:"â",Î:"î",Û:"û"};
+  var TRup={ç:"Ç",ğ:"Ğ",ı:"I",i:"İ",ö:"Ö",ş:"Ş",ü:"Ü",â:"Â",î:"Î",û:"Û"};
+  function trLower(s){return s.replace(/[A-ZÇĞIİÖŞÜÂÎÛ]/g,function(c){return TRlo[c]||c.toLowerCase();});}
+  function trUpper(s){return s.replace(/[a-zçğıöşüâîû]/g,function(c){return TRup[c]||c.toUpperCase();});}
+  function cap(w){return w?trUpper(w.charAt(0))+trLower(w.slice(1)):w;}
+  function trTitle(s){
+    var small={"ve":1,"ile":1,"için":1,"de":1,"da":1};
+    return s.split(/\s+/).map(function(w,i){
+      if(i>0&&small[trLower(w)])return trLower(w);
+      return w.split("-").map(cap).join("-");
+    }).join(" ");
+  }
+  function courseName(n){return /[a-zçğıöşü]/.test(n)?n:trTitle(n);}
+  function minutes(t){var a=t.split(":");return (+a[0])*60+(+a[1]);}
+  function nowMin(){var d=new Date();return d.getHours()*60+d.getMinutes();}
+  function dayIndex(){var g=new Date().getDay();return g===0?7:g;}
+  function rows(){return DATA.filter(function(r){return r.s===S.sem;});}
+  function countSem(n){return DATA.filter(function(r){return r.s===n;}).length;}
+  function pickKey(k){return S.sem+"|"+k;}
+  function pickIndex(k){var v=picks[pickKey(k)];return (v===0||v)?v:null;}
+  function groupMap(day){
+    var m=new Map();
+    rows().forEach(function(r){
+      if(r.d!==day)return; var k=r.d+"|"+r.st;
+      if(!m.has(k))m.set(k,[]); m.get(k).push(r);
+    });
+    m.forEach(function(a){a.sort(function(x,y){return x.n.localeCompare(y.n,"tr");});});
+    return m;
+  }
+  function groupFor(key){var p=key.split("|");return rows().filter(function(r){return r.d==p[0]&&r.st===p[1];}).sort(function(a,b){return a.n.localeCompare(b.n,"tr");});}
+  function effective(day){
+    var list=[],unpicked=0;
+    groupMap(day).forEach(function(arr,key){
+      if(arr.length===1)list.push({key:key,row:arr[0],single:true});
+      else{
+        var pi=pickIndex(key);
+        if(pi==null||pi>=arr.length){list.push({key:key,arr:arr,placeholder:true});unpicked++;}
+        else list.push({key:key,row:arr[pi],single:false});
+      }
+    });
+    list.sort(function(a,b){return minutes((a.row||a.arr[0]).st)-minutes((b.row||b.arr[0]).st);});
+    return {list:list,unpicked:unpicked};
+  }
+  function isNow(r){return r.d===dayIndex()&&nowMin()>=minutes(r.st)&&nowMin()<minutes(r.en);}
+
+  function load(){try{var o=JSON.parse(localStorage.getItem(LSKEY)||"{}");if(o.sem)S.sem=o.sem;if(o.tab)S.tab=o.tab;picks=o.picks||{};}catch(e){}}
+  function save(){try{localStorage.setItem(LSKEY,JSON.stringify({sem:S.sem,tab:S.tab,picks:picks}));}catch(e){}}
+
+  function card(r,opt){
+    opt=opt||{};
+    return '<div class="cls fade'+(isNow(r)?" now":"")+'">'+
+      '<div class="tm"><b>'+esc(r.st)+'</b><span>'+esc(r.en)+'</span></div>'+
+      '<div class="bar"></div>'+
+      '<div class="bd">'+
+        '<div class="ttl">'+esc(courseName(r.n))+'</div>'+
+        '<div class="tags">'+
+          '<span class="pill">'+IC.pin+esc(r.r||"—")+'</span>'+
+          (r.cr?'<span class="pill plain">'+esc(r.cr)+' kredi</span>':"")+
+        '</div>'+
+        '<div class="inst">'+IC.user+esc(r.i)+'</div>'+
+      '</div>'+
+      (opt.change?'<button class="chg" data-act="openElective" data-key="'+opt.key+'">değiştir</button>':"")+
+    '</div>';
+  }
+  function chooseCard(arr,key){
+    return '<button class="cls choose fade" data-act="openElective" data-key="'+key+'">'+
+      '<div class="tm"><b>'+esc(arr[0].st)+'</b><span>'+esc(arr[0].en)+'</span></div>'+
+      '<div class="bar"></div>'+
+      '<div class="bd"><div class="ttl">Seçmeli ders</div>'+
+      '<div class="tags"><span class="pill plain">'+arr.length+' seçenek</span><span class="pill">seç</span></div></div>'+
+    '</button>';
+  }
+  function listHTML(entries){
+    var out="";
+    entries.forEach(function(e){
+      if(e.placeholder)out+=chooseCard(e.arr,e.key);
+      else out+= e.single?card(e.row):card(e.row,{change:true,key:e.key});
+    });
+    return out;
+  }
+
+  function semGridHTML(){
+    var h='<div class="semsel">';
+    SEMS.forEach(function(n){
+      var c=countSem(n);
+      h+='<button class="sem'+(S.sem===n?" on":"")+(c?"":" off")+'" data-act="sem" data-s="'+n+'">'+
+        '<b>'+n+'. Yarıyıl</b><small>'+(c?((n%2?"Güz":"Bahar")+' dönemi · '+c+' ders'):"Program yok")+'</small></button>';
+    });
+    return h+'</div>';
+  }
+  function heroHTML(){
+    var t=dayIndex(),d=new Date(),eff=effective(t),n=nowMin();
+    var confirmed=eff.list.filter(function(e){return e.row;});
+    var cur=confirmed.filter(function(e){return n>=minutes(e.row.st)&&n<minutes(e.row.en);})[0];
+    var next=confirmed.filter(function(e){return minutes(e.row.st)>n;})[0];
+    var big,sub,badge;
+    if(cur){badge='<span class="badge"><span class="pulse"></span>ŞU AN DERSTE</span>';big=courseName(cur.row.n);sub=esc(cur.row.r||"—")+" · "+cur.row.en+"&rsquo;e kadar";}
+    else if(next){badge='<span class="badge">SIRADAKİ DERS</span>';big=courseName(next.row.n);sub=next.row.st+" · "+esc(next.row.r||"—");}
+    else if(confirmed.length){badge='<span class="badge">BUGÜN TAMAM</span>';big="Bugünlük ders bitti";sub="İyi çalışmalar.";}
+    else if(eff.unpicked){badge='<span class="badge">SEÇMELİ</span>';big="Seçmeli dersin var";sub="Bugün için "+eff.unpicked+" seçenekten birini seç.";}
+    else{badge='<span class="badge">BUGÜN</span>';big="Bugün dersin yok";sub="Serbest gün.";}
+    return '<div class="hero fade"><div class="dt">'+esc(DAYS[t-1][0]+", "+d.getDate()+" "+AYLAR[d.getMonth()])+'</div>'+
+      '<div class="big">'+esc(big)+'</div><div class="sub">'+sub+'</div>'+badge+'</div>';
+  }
+  function todayHTML(){
+    var t=dayIndex(),eff=effective(t),h='<div class="sechead">Bugün · '+esc(DAYS[t-1][0])+'</div>';
+    if(!eff.list.length)h+='<div class="empty"><b>Bugün dersin yok</b>'+esc(eff.unpicked?"Seçmeli ders seçmediğin "+eff.unpicked+" saat var.":"Rahatına bak.")+'</div>';
+    else{
+      h+=listHTML(eff.list);
+      if(eff.unpicked)h+='<div class="empty" style="padding:14px"><b>'+eff.unpicked+' seçmeli ders seçilmedi</b>Hafta sekmesinden seçebilirsin.</div>';
+    }
+    return h;
+  }
+  function weekHTML(){
+    var t=dayIndex(),sel=S.day||t,chips='<div class="days">';
+    for(var d=1;d<=7;d++){
+      var c=effective(d).list.length;
+      chips+='<button class="chip'+(d===sel?" on":"")+(d===t?" today":"")+'" data-act="day" data-day="'+d+'">'+
+        '<b>'+DAYS[d-1][1]+'</b><small>'+(c?c+" ders":"—")+'</small>'+
+        '<span class="dot" style="visibility:'+(c?"visible":"hidden")+'"></span></button>';
+    }
+    chips+='</div>';
+    var eff=effective(sel),body="";
+    if(!eff.list.length)body='<div class="empty"><b>'+esc(DAYS[sel-1][0])+' günü ders yok</b>Başka bir gün seç.</div>';
+    else body+=listHTML(eff.list);
+    return chips+body;
+  }
+  function qlistHTML(){
+    var q=trLower(S.q.trim()),list=rows().slice();
+    list.sort(function(a,b){return a.d-b.d||minutes(a.st)-minutes(b.st)||a.n.localeCompare(b.n,"tr");});
+    if(q)list=list.filter(function(r){return trLower([r.n,r.r,r.i,r.cr,r.b].join(" ")).indexOf(q)>=0;});
+    if(!list.length)return '<div class="empty"><b>Sonuç yok</b>Farklı bir kelime dene.</div>';
+    var h="";
+    list.forEach(function(r){
+      h+='<div class="row fade"><div class="when"><b>'+DAYS[r.d-1][1]+'</b><span>'+esc(r.st)+"-"+esc(r.en)+'</span></div>'+
+        '<div style="min-width:0"><div class="ttl">'+esc(courseName(r.n))+'</div>'+
+        '<div class="sub"><span class="pill">'+IC.pin+esc(r.r||"—")+'</span>'+(r.cr?'<span class="pill plain">'+esc(r.cr)+' kredi</span>':"")+'</div>'+
+        '<div class="sub">'+esc(r.i)+'</div></div></div>';
+    });
+    return h;
+  }
+  function coursesHTML(){
+    return '<div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'+
+      '<input id="q" type="search" value="'+esc(S.q)+'" placeholder="Ders, derslik veya hoca ara…" autocomplete="off" enterkeyhint="search"></div>'+
+      '<div id="qlist">'+qlistHTML()+'</div>';
+  }
+
+  function render(){
+    var app=document.getElementById("app");
+    var h=semGridHTML();
+    if(!countSem(S.sem)){
+      h+='<div class="empty" style="padding:22px 18px"><b>'+S.sem+'. Yarıyıl için program yok</b>Paylaşılan 2026-2027 Güz dosyasında yalnızca 1. ve 3. yarıyıl var. Bahar dönemi programı yayınlandığında bu sekme doldurulabilir.</div>';
+      app.innerHTML=h+'<footer>Resmî olmayan öğrenci özeti · Kaynak: Esenyurt Üniversitesi MYO 2026-2027 Güz ders programı</footer>';
+      return;
+    }
+    var tips="";
+    try{
+      if(S.tab==="today"&&!localStorage.getItem("ascilik.tip.off"))
+        tips='<div class="tip"><div><b>İpucu:</b> iPhone’da uygulama gibi kullanmak için Safari’de <b>Paylaş → Ana Ekrana Ekle</b> yapabilirsin.</div><button data-act="tipOff" aria-label="Kapat">&times;</button></div>';
+    }catch(e){}
+    var tabs=[["today","Bugün"],["week","Hafta"],["courses","Dersler"]];
+    h+=tips+heroHTML()+'<div class="seg">'+tabs.map(function(t){
+      return '<button class="'+(S.tab===t[0]?"on":"")+'" data-act="tab" data-tab="'+t[0]+'">'+t[1]+'</button>';
+    }).join("")+'</div>';
+    if(S.tab==="today")h+=todayHTML();
+    else if(S.tab==="week")h+=weekHTML();
+    else h+=coursesHTML();
+    h+='<footer>Aşçılık Programı · '+S.sem+'. Yarıyıl<br>Resmî olmayan öğrenci özeti · Kaynak: Esenyurt Üniversitesi MYO 2026-2027 Güz programı</footer>';
+    app.innerHTML=h;
+  }
+
+  function openElective(key){
+    var arr=groupFor(key),cur=pickIndex(key);
+    document.getElementById("sheetTitle").textContent="Seçmeli ders";
+    document.getElementById("sheetHint").textContent=DAYS[arr[0].d-1][0]+" "+arr[0].st+" · aynı saatte "+arr.length+" ders var, kendi dersini seç.";
+    var h="";
+    arr.forEach(function(r,idx){
+      h+='<button class="opt'+(cur===idx?" sel":"")+'" data-act="choose" data-key="'+key+'" data-idx="'+idx+'">'+
+        '<span class="radio"></span><span><span class="ot">'+esc(courseName(r.n))+'</span>'+
+        '<span class="os">'+esc(r.i)+(r.cr?" · "+esc(r.cr)+" kredi":"")+'</span></span></button>';
+    });
+    if(cur!=null)h+='<button class="opt" data-act="clearPick" data-key="'+key+'"><span class="radio"></span><span><span class="ot">Seçimi kaldır</span><span class="os">Bu saati boş bırak</span></span></button>';
+    document.getElementById("sheetList").innerHTML=h;
+    document.getElementById("sheet").classList.add("show");
+    document.getElementById("scrim").classList.add("show");
+  }
+  function closeSheet(){
+    document.getElementById("sheet").classList.remove("show");
+    document.getElementById("scrim").classList.remove("show");
+  }
+
+  document.addEventListener("click",function(e){
+    var el=e.target.closest("[data-act]");if(!el)return;
+    var a=el.getAttribute("data-act");
+    if(a==="sem"){S.sem=+el.getAttribute("data-s");S.tab="today";S.day=null;S.q="";save();render();}
+    else if(a==="tab"){S.tab=el.getAttribute("data-tab");S.day=null;save();render();}
+    else if(a==="day"){S.day=+el.getAttribute("data-day");render();}
+    else if(a==="openElective")openElective(el.getAttribute("data-key"));
+    else if(a==="choose"){picks[pickKey(el.getAttribute("data-key"))]=+el.getAttribute("data-idx");save();closeSheet();render();}
+    else if(a==="clearPick"){delete picks[pickKey(el.getAttribute("data-key"))];save();closeSheet();render();}
+    else if(a==="closeAll")closeSheet();
+    else if(a==="tipOff"){try{localStorage.setItem("ascilik.tip.off","1");}catch(err){}render();}
+  });
+  document.addEventListener("input",function(e){
+    var el=e.target;
+    if(el&&el.id==="q"){S.q=el.value;var l=document.getElementById("qlist");if(l)l.innerHTML=qlistHTML();}
+  });
+
+  load();
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+*.pdf
+program.txt
+data.json
+parsed.txt
+head.html
+tail.html
+test-app.js
+ascilik.head.html
+ascilik.tail.html
+ascilik.data.json
+index.html

@@ -1,0 +1,10 @@
+{
+  "name": "ascilik-ders-programi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Esenyurt Üniversitesi MYO Aşçılık Programı - iPhone için tek dosyalık ders programı",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-ascilik.js"
+  }
+}
