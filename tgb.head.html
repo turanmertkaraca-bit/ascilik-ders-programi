@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ders Programı">
+<meta name="theme-color" content="#0b1b3a">
+<meta name="description" content="Esenyurt Üniversitesi MYO 2026-2027 Güz dönemi ders programı - haftalık görünüm, derslik ve öğretim görevlisi bilgileri.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232f6bff'/%3E%3Ctext x='50' y='69' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EE%26%23252%3B%3C/text%3E%3C/svg%3E">
+<title>Tıbbi Görüntüleme Ders Programı · Esenyurt Üniversitesi SHMYO</title>
+<style>
+  :root{
+    --bg:#eef1f6; --bg2:#e3e8f1; --card:#ffffff; --text:#101828; --muted:#667085;
+    --line:rgba(16,24,40,.10); --accent:#2f6bff; --accent-ink:#ffffff; --accent-soft:rgba(47,107,255,.10);
+    --ok:#12b76a; --ok-soft:rgba(18,183,106,.12); --warn:#f79009; --warn-soft:rgba(247,144,9,.14);
+    --radius:20px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px -12px rgba(16,24,40,.18);
+    --glass:rgba(255,255,255,.72); --chipbg:rgba(120,120,128,.16); --warnline:rgba(247,144,9,.35);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0b0f17; --bg2:#111827; --card:#161c27; --text:#eef2f8; --muted:#98a2b3;
+      --line:rgba(255,255,255,.09); --accent:#5b8dff; --accent-ink:#0b0f17; --accent-soft:rgba(91,141,255,.16);
+      --ok:#32d583; --ok-soft:rgba(50,213,131,.14); --warn:#fdb022; --warn-soft:rgba(253,176,34,.16);
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 30px -16px rgba(0,0,0,.7);
+      --glass:rgba(17,24,39,.72); --chipbg:rgba(152,162,179,.18); --warnline:rgba(253,176,34,.35);
+    }
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+    background-attachment:fixed;
+    color:var(--text);
+    font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    min-height:100vh; overscroll-behavior-y:none;
+  }
+  button{font:inherit;color:inherit;cursor:pointer}
+  input{font:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px}
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding-top:env(safe-area-inset-top);
+    background:var(--glass);
+    -webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);
+    border-bottom:1px solid var(--line);
+  }
+  .toprow{display:flex;align-items:center;gap:12px;padding:10px 16px;max-width:720px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+  .logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#2f6bff,#7c3aed);display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;letter-spacing:.3px;flex:none;box-shadow:0 4px 12px -4px rgba(47,107,255,.7)}
+  .brandtxt{min-width:0}
+  .brandtxt b{display:block;font-size:15px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brandtxt span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ghost{
+    border:1px solid var(--line);background:var(--card);border-radius:12px;
+    padding:8px 12px;font-size:13px;font-weight:600;white-space:nowrap;flex:none;
+  }
+  .ghost:active{transform:scale(.96)}
+
+  main{padding:16px 0 calc(40px + env(safe-area-inset-bottom))}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;border-radius:24px;padding:18px 18px 16px;
+    background:linear-gradient(135deg,#1b3a8f 0%,#2f6bff 55%,#7c3aed 120%);
+    box-shadow:0 18px 40px -22px rgba(27,58,143,.9);
+  }
+  .hero:after{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .hero .dt{position:relative;font-size:13px;font-weight:600;opacity:.9;letter-spacing:.2px}
+  .hero .big{position:relative;font-size:22px;font-weight:750;letter-spacing:-.4px;margin-top:8px;line-height:1.25}
+  .hero .sub{position:relative;font-size:14px;opacity:.95;margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .hero .badge{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;letter-spacing:.3px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:#7CFFB2;box-shadow:0 0 0 0 rgba(124,255,178,.8);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,255,178,.7)}70%{box-shadow:0 0 0 9px rgba(124,255,178,0)}100%{box-shadow:0 0 0 0 rgba(124,255,178,0)}}
+
+  /* ---------- segmented ---------- */
+  .seg{display:flex;gap:3px;background:var(--chipbg);border-radius:14px;padding:3px;margin:16px 0}
+  .seg button{flex:1;border:0;background:transparent;padding:9px 6px;border-radius:11px;font-size:14px;font-weight:650;color:var(--muted);transition:.15s}
+  .seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(16,24,40,.16)}
+
+  .sechead{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:20px 4px 10px}
+
+  /* ---------- day chips ---------- */
+  .days{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+  .days::-webkit-scrollbar{display:none}
+  .chip{
+    flex:none;min-width:52px;border:1px solid var(--line);background:var(--card);border-radius:14px;
+    padding:8px 6px 7px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;
+  }
+  .chip b{font-size:13px;font-weight:700}
+  .chip small{font-size:11px;color:var(--muted);font-weight:600}
+  .chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .chip.on small,.chip.on .dot{color:var(--accent-ink)}
+  .chip.on .dot{background:var(--accent-ink)}
+  .chip.today:not(.on){border-color:var(--accent)}
+
+  /* ---------- class card ---------- */
+  .cls{
+    display:flex;gap:13px;align-items:stretch;background:var(--card);border-radius:18px;
+    padding:14px;margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--line);width:100%;text-align:left;
+  }
+  .cls .tm{flex:none;width:62px;display:flex;flex-direction:column;gap:2px;padding-top:1px}
+  .cls .tm b{font-size:15px;font-weight:750;letter-spacing:-.2px}
+  .cls .tm span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .cls .bar{width:4px;border-radius:4px;background:var(--accent-soft);flex:none}
+  .cls .bd{flex:1;min-width:0}
+  .cls .ttl{font-size:15.5px;font-weight:680;letter-spacing:-.25px;line-height:1.3}
+  .cls .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .pill{display:inline-flex;align-items:center;gap:5px;border-radius:9px;padding:4px 8px;font-size:12.5px;font-weight:650;background:var(--accent-soft);color:var(--accent)}
+  .pill.plain{background:var(--chipbg);color:var(--muted)}
+  .pill svg{width:12px;height:12px}
+  .cls .inst{font-size:12.5px;color:var(--muted);margin-top:8px;display:flex;align-items:center;gap:6px}
+  .cls .inst svg{width:13px;height:13px;flex:none;opacity:.8}
+  .cls.now{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok-soft),var(--shadow)}
+  .cls.now .bar{background:var(--ok)}
+  .cls.choose{border-style:dashed;color:var(--muted);align-items:center}
+  .cls.choose .ttl{color:var(--text)}
+  .cls .chg{align-self:flex-start;border:0;background:transparent;color:var(--accent);font-size:12.5px;font-weight:700;padding:2px}
+
+  .empty{background:var(--card);border:1px dashed var(--line);border-radius:18px;padding:26px 18px;text-align:center;color:var(--muted);box-shadow:var(--shadow)}
+  .empty b{display:block;color:var(--text);font-size:16px;margin-bottom:4px}
+
+  /* ---------- course list ---------- */
+  .search{position:relative;margin:4px 0 12px}
+  .search input{
+    width:100%;padding:12px 14px 12px 40px;border-radius:14px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:16px;outline:none;box-shadow:var(--shadow);
+  }
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+  .row{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+  .row .when{flex:none;width:74px}
+  .row .when b{display:block;font-size:13px;font-weight:750}
+  .row .when span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .row .ttl{font-size:14.5px;font-weight:650;letter-spacing:-.2px}
+  .row .sub{font-size:12.5px;color:var(--muted);margin-top:5px;display:flex;flex-wrap:wrap;gap:6px}
+
+  /* ---------- overlays ---------- */
+  .scrim{position:fixed;inset:0;background:rgba(6,10,20,.45);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);z-index:40;opacity:0;pointer-events:none;transition:.2s}
+  .scrim.show{opacity:1;pointer-events:auto}
+  .overlay{
+    position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;
+    transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);visibility:hidden;
+  }
+  .overlay.show{transform:none;visibility:visible}
+  .ovhead{padding-top:calc(env(safe-area-inset-top) + 12px);padding-bottom:10px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .ovhead .in{max-width:720px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px}
+  .ovhead h2{margin:0;font-size:19px;letter-spacing:-.4px;flex:1}
+  .ovbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 0 calc(30px + env(safe-area-inset-bottom))}
+  .ovbody .in{max-width:720px;margin:0 auto;padding:0 16px}
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .intro b{display:block;font-size:16px;letter-spacing:-.3px;margin-bottom:4px}
+  .intro p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+  .prog{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
+  .prog .nm{font-size:15px;font-weight:660;letter-spacing:-.25px}
+  .prog .sems{display:flex;gap:8px;margin-top:10px}
+  .sembtn{flex:1;border:1px solid var(--line);background:transparent;border-radius:11px;padding:9px 8px;font-size:13px;font-weight:650}
+  .sembtn.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .sembtn:active{transform:scale(.98)}
+
+  .sheet{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);
+    border-radius:22px 22px 0 0;max-height:82vh;display:flex;flex-direction:column;
+    transform:translateY(101%);transition:transform .28s cubic-bezier(.32,.72,0,1);visibility:hidden;
+    box-shadow:0 -10px 40px -12px rgba(0,0,0,.35);
+  }
+  .sheet.show{transform:none;visibility:visible}
+  .sheet .grab{width:38px;height:5px;border-radius:3px;background:var(--line);margin:9px auto 2px}
+  .sheet h3{margin:6px 18px 2px;font-size:17px;letter-spacing:-.35px}
+  .sheet .hint{margin:2px 18px 8px;color:var(--muted);font-size:13px}
+  .sheet .list{overflow:auto;-webkit-overflow-scrolling:touch;padding:6px 12px calc(16px + env(safe-area-inset-bottom))}
+  .opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:0;background:transparent;padding:13px 8px;border-radius:12px}
+  .opt+.opt{border-top:1px solid var(--line)}
+  .opt .radio{width:21px;height:21px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center}
+  .opt.sel .radio{border-color:var(--accent)}
+  .opt.sel .radio:after{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .opt .ot{font-size:14.5px;font-weight:640;letter-spacing:-.2px}
+  .opt .os{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+  /* ---------- misc ---------- */
+  .tip{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);border:1px solid var(--warnline);border-radius:16px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.45}
+  .tip b{font-weight:700}
+  .tip button{margin-left:auto;border:0;background:transparent;color:var(--muted);font-weight:700;font-size:16px;line-height:1;padding:2px 4px}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 4px 10px;line-height:1.5}
+  footer a{color:var(--accent);text-decoration:none}
+  .fade{animation:fade .25s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  /* ---------- yarıyıl seçici ---------- */
+  .semsel{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+  .sem{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:11px 13px;text-align:left;box-shadow:var(--shadow);transition:.15s}
+  .sem b{display:block;font-size:14.5px;letter-spacing:-.2px}
+  .sem small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+  .sem.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .sem.on small{color:var(--accent-ink);opacity:.85}
+  .sem.off{border-style:dashed;opacity:.6}
+  .sem.on.off{opacity:1}
+  .sem:active{transform:scale(.98)}
+
+  .glist{margin-top:9px;display:flex;flex-direction:column;gap:6px}
+  .grow{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);line-height:1.3}
+  .grow svg{width:12px;height:12px;flex:none;opacity:.85}
+  .gr{flex:none;min-width:44px;font-weight:700;color:var(--text);background:var(--chipbg);border-radius:7px;padding:2px 6px;text-align:center}
+  .gi{min-width:0}
+  @media print{.seg,.days,.tip,header.top,footer,.semsel{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="toprow">
+    <div class="brand">
+      <div class="logo">TGB</div>
+      <div class="brandtxt">
+        <b id="hTitle">Tıbbi Görüntüleme</b>
+        <span id="hSub">Esenyurt Üniversitesi SHMYO · 2026-2027 Güz</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main><div class="wrap" id="app"></div></main>
+
+<div class="scrim" id="scrim" data-act="closeAll"></div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="grab"></div>
+  <h3 id="sheetTitle">Ders grupları</h3>
+  <div class="hint" id="sheetHint"></div>
+  <div class="list" id="sheetList"></div>
+</div>
+
+<script>
+const DATA = 

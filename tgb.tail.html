@@ -1,0 +1,173 @@
+;
+"use strict";
+(function(){
+  function showError(msg){
+    try{
+      var d=document.getElementById("booterr");
+      if(!d){
+        d=document.createElement("div"); d.id="booterr";
+        d.style.cssText="margin:14px 16px;padding:12px 14px;border-radius:14px;background:#7a1f1f;color:#fff;font:13px/1.45 -apple-system,sans-serif;word-break:break-word";
+        if(document.body)document.body.insertBefore(d,document.body.firstChild);
+      }
+      d.textContent="Uygulama yüklenemedi: "+msg;
+    }catch(e){}
+  }
+  window.onerror=function(m,s,l,c){showError(m+" @"+(l||"?")+":"+(c||"?"));return false;};
+
+  var DAYS=[["Pazartesi","Pzt"],["Salı","Sal"],["Çarşamba","Çar"],["Perşembe","Per"],["Cuma","Cum"],["Cumartesi","Cmt"],["Pazar","Paz"]];
+  var AYLAR=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+  var LSKEY="tgb.ders.v1";
+  var IC={
+    pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.4-3.4 4-5 7-5s5.6 1.6 7 5"/></svg>',
+    users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c1.2-3 3.6-4.5 6.5-4.5s5.3 1.5 6.5 4.5"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6"/><path d="M18 20c-.3-1.4-.8-2.6-1.6-3.6"/></svg>'
+  };
+  var S={tab:"today",day:null,q:""};
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  var TRlo={Ç:"ç",Ğ:"ğ",I:"ı",İ:"i",Ö:"ö",Ş:"ş",Ü:"ü",Â:"â",Î:"î",Û:"û"};
+  var TRup={ç:"Ç",ğ:"Ğ",ı:"I",i:"İ",ö:"Ö",ş:"Ş",ü:"Ü",â:"Â",î:"Î",û:"Û"};
+  function trLower(s){return s.replace(/[A-ZÇĞIİÖŞÜÂÎÛ]/g,function(c){return TRlo[c]||c.toLowerCase();});}
+  function trUpper(s){return s.replace(/[a-zçğıöşüâîû]/g,function(c){return TRup[c]||c.toUpperCase();});}
+  function cap(w){return w?trUpper(w.charAt(0))+trLower(w.slice(1)):w;}
+  function trTitle(s){
+    var small={"ve":1,"ile":1,"için":1,"de":1,"da":1};
+    return s.split(/\s+/).map(function(w,i){
+      if(i>0&&small[trLower(w)])return trLower(w);
+      return w.split("-").map(cap).join("-");
+    }).join(" ");
+  }
+  function courseName(n){return /[a-zçğıöşü]/.test(n)?n:trTitle(n);}
+  function minutes(t){var a=t.split(":");return (+a[0])*60+(+a[1]);}
+  function nowMin(){var d=new Date();return d.getHours()*60+d.getMinutes();}
+  function dayIndex(){var g=new Date().getDay();return g===0?7:g;}
+
+  function rowsFor(day){return DATA.filter(function(r){return r.d===day;}).sort(function(a,b){return minutes(a.st)-minutes(b.st);});}
+  function isNow(r){return r.d===dayIndex()&&nowMin()>=minutes(r.st)&&nowMin()<minutes(r.en);}
+
+  function load(){try{var o=JSON.parse(localStorage.getItem(LSKEY)||"{}");if(o.tab)S.tab=o.tab;}catch(e){}}
+  function save(){try{localStorage.setItem(LSKEY,JSON.stringify({tab:S.tab}));}catch(e){}}
+
+  function heroHTML(){
+    var t=dayIndex(),d=new Date(),list=rowsFor(t),n=nowMin();
+    var cur=list.filter(function(r){return n>=minutes(r.st)&&n<minutes(r.en);})[0];
+    var next=list.filter(function(r){return minutes(r.st)>n;})[0];
+    var big,sub,badge;
+    if(cur){badge='<span class="badge"><span class="pulse"></span>ŞU AN DERSTE</span>';big=courseName(cur.n);sub=esc(groupLine(cur))+" · "+cur.en+"&rsquo;e kadar";}
+    else if(next){badge='<span class="badge">SIRADAKİ DERS</span>';big=courseName(next.n);sub=next.st+" · "+esc(groupLine(next));}
+    else if(list.length){badge='<span class="badge">BUGÜN TAMAM</span>';big="Bugünlük ders bitti";sub="İyi çalışmalar.";}
+    else{badge='<span class="badge">BUGÜN</span>';big="Bugün dersin yok";sub=DAYS[t-1][0]+" günü boş.";}
+    return '<div class="hero fade"><div class="dt">'+esc(DAYS[t-1][0]+", "+d.getDate()+" "+AYLAR[d.getMonth()])+'</div>'+
+      '<div class="big">'+esc(big)+'</div><div class="sub">'+sub+'</div>'+badge+'</div>';
+  }
+
+  function groupLine(r){
+    var g=r.groups||[];
+    if(g.length===1)return (g[0].r||"—")+" · "+g[0].i;
+    return g.length+" grup · aynı saatte farklı sınıflar";
+  }
+
+  function card(r){
+    var g=r.groups||[], multi=g.length>1;
+    var tags='<span class="pill">'+IC.pin+esc(g.map(function(x){return x.r;}).filter(Boolean).join(" / ")||"—")+'</span>'+
+      (r.c?'<span class="pill plain">'+esc(r.c)+'</span>':"")+
+      (multi?'<span class="pill plain">'+g.length+' grup</span>':"");
+    var people;
+    if(multi){
+      people='<div class="glist">'+g.map(function(x){
+        return '<div class="grow">'+IC.pin+'<span class="gr">'+esc(x.r||"—")+'</span><span class="gi">'+esc(x.i)+'</span></div>';
+      }).join("")+'</div>';
+    } else {
+      people='<div class="inst">'+IC.user+esc(g[0].i)+'</div>';
+    }
+    return '<div class="cls fade'+(isNow(r)?" now":"")+'">'+
+      '<div class="tm"><b>'+esc(r.st)+'</b><span>'+esc(r.en)+'</span></div>'+
+      '<div class="bar"></div>'+
+      '<div class="bd">'+
+        '<div class="ttl">'+esc(courseName(r.n))+'</div>'+
+        '<div class="tags">'+tags+'</div>'+
+        people+
+      '</div></div>';
+  }
+
+  function todayHTML(){
+    var t=dayIndex(),list=rowsFor(t),h='<div class="sechead">Bugün · '+esc(DAYS[t-1][0])+'</div>';
+    if(!list.length)h+='<div class="empty"><b>Bugün dersin yok</b>'+esc(DAYS[t-1][0])+' günü tamamen boş.</div>';
+    else list.forEach(function(r){h+=card(r);});
+    if(t===3)h+='<div class="empty" style="padding:14px;margin-top:10px"><b>Not</b>Çarşamba bu yarıyılda hiç ders yok.</div>';
+    return h;
+  }
+
+  function weekHTML(){
+    var t=dayIndex(),sel=S.day||t,chips='<div class="days">';
+    for(var d=1;d<=7;d++){
+      var c=rowsFor(d).length;
+      chips+='<button class="chip'+(d===sel?" on":"")+(d===t?" today":"")+'" data-act="day" data-day="'+d+'">'+
+        '<b>'+DAYS[d-1][1]+'</b><small>'+(c?c+" ders":"—")+'</small>'+
+        '<span class="dot" style="visibility:'+(c?"visible":"hidden")+'"></span></button>';
+    }
+    chips+='</div>';
+    var list=rowsFor(sel),body="";
+    if(!list.length)body='<div class="empty"><b>'+esc(DAYS[sel-1][0])+' günü ders yok</b>Başka bir gün seç.</div>';
+    else list.forEach(function(r){body+=card(r);});
+    return chips+body;
+  }
+
+  function qlistHTML(){
+    var q=trLower(S.q.trim()),list=DATA.slice();
+    list.sort(function(a,b){return a.d-b.d||minutes(a.st)-minutes(b.st);});
+    if(q)list=list.filter(function(r){
+      var hay=[r.n,r.c||""].concat((r.groups||[]).map(function(g){return g.r+" "+g.i;})).join(" ");
+      return trLower(hay).indexOf(q)>=0;
+    });
+    if(!list.length)return '<div class="empty"><b>Sonuç yok</b>Farklı bir kelime dene.</div>';
+    var h="";
+    list.forEach(function(r){
+      h+='<div class="row fade"><div class="when"><b>'+DAYS[r.d-1][1]+'</b><span>'+esc(r.st)+"-"+esc(r.en)+'</span></div>'+
+        '<div style="min-width:0"><div class="ttl">'+esc(courseName(r.n))+'</div>'+
+        '<div class="sub"><span class="pill">'+IC.pin+esc((r.groups||[]).map(function(g){return g.r;}).filter(Boolean).join(" / ")||"—")+'</span>'+(r.c?'<span class="pill plain">'+esc(r.c)+'</span>':"")+'</div>'+
+        '<div class="sub">'+esc((r.groups||[]).map(function(g){return g.i;}).join(" · "))+'</div></div></div>';
+    });
+    return h;
+  }
+  function coursesHTML(){
+    return '<div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'+
+      '<input id="q" type="search" value="'+esc(S.q)+'" placeholder="Ders, sınıf veya hoca ara…" autocomplete="off" enterkeyhint="search"></div>'+
+      '<div id="qlist">'+qlistHTML()+'</div>';
+  }
+
+  function render(){
+    var app=document.getElementById("app");
+    var tips="";
+    try{
+      if(S.tab==="today"&&!localStorage.getItem("tgb.tip.off"))
+        tips='<div class="tip"><div><b>İpucu:</b> iPhone’da uygulama gibi kullanmak için Safari’de <b>Paylaş → Ana Ekrana Ekle</b>.</div><button data-act="tipOff" aria-label="Kapat">&times;</button></div>';
+    }catch(e){}
+    var tabs=[["today","Bugün"],["week","Hafta"],["courses","Dersler"]];
+    var h=tips+heroHTML()+'<div class="seg">'+tabs.map(function(t){
+      return '<button class="'+(S.tab===t[0]?"on":"")+'" data-act="tab" data-tab="'+t[0]+'">'+t[1]+'</button>';
+    }).join("")+'</div>';
+    if(S.tab==="today")h+=todayHTML();
+    else if(S.tab==="week")h+=weekHTML();
+    else h+=coursesHTML();
+    h+='<footer>Tıbbi Görüntüleme Teknikleri · 1. Yarıyıl<br>SHMYO · 2026-2027 Güz · resmî olmayan öğrenci özeti</footer>';
+    app.innerHTML=h;
+  }
+
+  document.addEventListener("click",function(e){
+    var el=e.target.closest("[data-act]");if(!el)return;
+    var a=el.getAttribute("data-act");
+    if(a==="tab"){S.tab=el.getAttribute("data-tab");S.day=null;save();render();}
+    else if(a==="day"){S.day=+el.getAttribute("data-day");render();}
+    else if(a==="tipOff"){try{localStorage.setItem("tgb.tip.off","1");}catch(err){}render();}
+  });
+  document.addEventListener("input",function(e){
+    var el=e.target;
+    if(el&&el.id==="q"){S.q=el.value;var l=document.getElementById("qlist");if(l)l.innerHTML=qlistHTML();}
+  });
+
+  try{ load(); render(); }catch(err){ showError((err&&err.message?err.message:String(err))); }
+})();
+</script>
+</body>
+</html>
